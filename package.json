@@ -8,7 +8,22 @@
     "build": "vite build",
     "serve": "vite preview"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.mbanq.com:x/elevens.git"
+  },
+  "keywords": [
+    "math",
+    "primary school",
+    "addition",
+    "substraction",
+    "division",
+    "multiplication"
+  ],
+  "author": {
+    "name": "Igor Kostyuchenok",
+    "email": "igor.kostyuchenok@gmail.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "vite": "^2.2.1"
