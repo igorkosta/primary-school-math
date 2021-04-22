@@ -28,7 +28,7 @@ jobs:
           node-version: '12'
       - run: |
         npm install
-        yarn build
+        npm run build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
