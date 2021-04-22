@@ -10,10 +10,13 @@
     <div class="menu">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Math</a>
-          <div id="navbarNav">
+          <a class="navbar-brand" href="#"><img src="./operations.png" width="50" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item">
+              <li class="nav-item mx-3">
                 <select
                   id="operation"
                   class="form-select"
@@ -39,7 +42,7 @@
               </li>
               <li class="nav-item">
                 <button
-                  class="btn btn-primary"
+                  class="btn btn-primary mx-3"
                   onClick="showValues()"
                 >Generate</button>
               </li>
@@ -48,21 +51,29 @@
         </div>
       </nav>
     </div>
-    <div class="paper">
-      <div class="lines">
-        <div id="equations" class="text">
+    <div class="content">
+      <div class="paper">
+        <div class="lines">
+          <div id="equations" class="text">
+            <h1>Choose a mathematical operation and how many digits the numbers in operation should have</h1>
+          </div>
         </div>
+        <div class="holes hole-top"></div>
+        <div class="holes hole-middle"></div>
+        <div class="holes hole-bottom"></div>
       </div>
-      <div class="holes hole-top"></div>
-      <div class="holes hole-middle"></div>
-      <div class="holes hole-bottom"></div>
     </div>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      </div>
+    </footer>
     <script type="text/javascript">
       function showValues() {
         const operation = document.getElementById('operation').value
         const digits = document.getElementById('digits').value
         const exercise = (operation, digits) => {
-          const n = 10 * digits;
+          const n = Math.pow(10, digits);
           const number = () => Math.floor(Math.random() * n);
           return `<li>${number()} ${operation} ${number()} = </li>`
         }
