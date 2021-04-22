@@ -1,0 +1,16 @@
+{
+  "name": "primary-school-math",
+  "version": "0.0.1",
+  "description": "",
+  "main": "math.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^2.2.1"
+  }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Primary School Math</title>
+  </head>
+  <body>
+    <div class="menu">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Math</a>
+          <div id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <select
+                  id="operation"
+                  class="form-select"
+                >
+                  <option selected>Operation</option>
+                  <option value="+">addition</option>
+                  <option value="-">subtraction</option>
+                  <option value="/">division</option>
+                  <option value="x">multiplication</option>
+                </select>
+              </li>
+              <li class="nav-item">
+                <select
+                  id="digits"
+                  class="form-select"
+                >
+                  <option selected>Nr. of Digits</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="random">random</option>
+                </select>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="btn btn-primary"
+                  onClick="showValues()"
+                >Generate</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="paper">
+      <div class="lines">
+        <div id="equations" class="text">
+        </div>
+      </div>
+      <div class="holes hole-top"></div>
+      <div class="holes hole-middle"></div>
+      <div class="holes hole-bottom"></div>
+    </div>
+    <script type="text/javascript">
+      function showValues() {
+        const operation = document.getElementById('operation').value
+        const digits = document.getElementById('digits').value
+        const exercise = (operation, digits) => {
+          const n = 10 * digits;
+          const number = () => Math.floor(Math.random() * n);
+          return `<li>${number()} ${operation} ${number()} = </li>`
+        }
+        const exercises = (howMany = 22) => {
+          let equations = ''
+          for(let i = 1; i < howMany; i++) {
+            equations = equations + exercise(operation, digits)
+          }
+          return equations
+        }
+        document.getElementById('equations').innerHTML = `
+        <ul>
+          ${exercises()}
+        </ul>`
+      }
+    </script>
+  </body>
+</html>
