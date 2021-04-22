@@ -3,6 +3,10 @@
   <head>
     <meta charset=utf-8>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://github.com/niklasvh/html2canvas/releases/download/v1.0.0-rc.1/html2canvas.min.js"></script>
+
     
     <title>Primary School Math</title>
   <script type="module" crossorigin src="/primary-school-math/assets/index.68c45d51.js"></script>
@@ -16,7 +20,7 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item mx-3">
                 <select
@@ -48,13 +52,21 @@
                   onClick="showValues()"
                 >Generate</button>
               </li>
+              <li
+                id="download" class="nav-item"
+                style="display: none;">
+                <button
+                  class="btn btn-primary"
+                  onClick="download()"
+                >Download</button>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
     <div class="content">
-      <div class="paper">
+      <div id="paper" class="paper">
         <div class="lines">
           <div id="equations" class="text">
             <h1>Choose a mathematical operation and how many digits the numbers in operation should have</h1>
@@ -90,6 +102,18 @@
         <ul>
           ${exercises()}
         </ul>`
+        document.getElementById('download').style.display = 'block';
+      }
+      function download() {
+        window.jsPDF = window.jspdf.jsPDF;
+        const doc = new jsPDF('p', 'pt', 'a4');
+        const source = window.document.getElementById('equations');
+        doc.html(source, {
+          callback: function (doc) {
+            doc.save('Math.pdf');
+          },
+          margin: [20, 20, 20, 20]
+        })
       }
     </script>
   </body>
